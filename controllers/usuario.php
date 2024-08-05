@@ -3,14 +3,14 @@ require '../../models/Usuario.php';
 header('Content-Type: application/json; charset=UTF-8');
 
 $metodo = $_SERVER['REQUEST_METHOD'];
-// $tipo = $_REQUEST['tipo'];
+
 
 
 try {
     switch ($metodo) {
         case 'POST':
             $tipo = $_REQUEST['tipo']; 
-            $grado = new Usuario($_POST);
+            $usuario = new Usuario($_POST);
             switch ($tipo) {
                 case '1':
 
@@ -18,18 +18,7 @@ try {
                     $mensaje = "Guardado correctamente";
                     break;
 
-                    case '2':
-
-                        $ejecucion = $usuario->modificar();
-                        $mensaje = "Modificado correctamente";
-                        break;
-
-                        case '3':
-
-                            $ejecucion = $usuario->eliminar();
-                            $mensaje = "Eliminar correctamente";
-                            break;
-
+            
                 default:
                         $mensaje = "Tipo de operación no válida";
                     break;
@@ -41,7 +30,6 @@ try {
             ]);
             break;
         case 'GET':
-            // http_response_code(200);
             $usuario = new Usuario($_GET);
             $usuarios = $usuario->buscar();
             echo json_encode($usuarios);

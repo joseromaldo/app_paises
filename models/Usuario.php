@@ -15,13 +15,24 @@ class Usuario extends Conexion {
     }
 
     public function guardar() {
-        $sql = "INSERT INTO usuarios (usuario_nombre, usuario_telefono, usuario_correo) VALUES ('$this->usuario_nombre', '$this->usuario_telefono', '$this->usuario_correo')";
-        $resultado = self::ejecutar($sql);
-        return $resultado;
+        try {
+            $sql = "INSERT INTO usuario (usuario_nombre, usuario_telefono, usuario_correo) VALUES ('$this->usuario_nombre', '$this->usuario_telefono', '$this->usuario_correo')";
+            $resultado = self::ejecutar($sql);
+    
+            if (!$resultado) {
+                throw new Exception('Error al ejecutar la consulta.');
+            }
+    
+            return $resultado;
+        } catch (Exception $e) {
+            error_log('Error al guardar usuario: ' . $e->getMessage());
+            return false;
+        }
     }
+    
 
     public function buscar() {
-        $sql = "SELECT * FROM usuarios WHERE 1=1";
+        $sql = "SELECT * FROM usuario";
 
         if ($this->usuario_nombre != '') {
             $sql .= " AND usuario_nombre LIKE '%$this->usuario_nombre%'";
@@ -35,16 +46,7 @@ class Usuario extends Conexion {
         return $resultado;
     }
 
-    public function modificar() {
-        $sql = "UPDATE usuarios SET usuario_nombre = '$this->usuario_nombre', usuario_telefono = '$this->usuario_telefono', usuario_correo = '$this->usuario_correo' WHERE usuario_id = $this->usuario_id";
-        $resultado = self::ejecutar($sql);
-        return $resultado;
-    }
-
-    public function eliminar() {
-        $sql = "DELETE FROM usuarios WHERE usuario_id = $this->usuario_id";
-        $resultado = self::ejecutar($sql);
-        return $resultado;
-    }
 }
 ?>
+
+
