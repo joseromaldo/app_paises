@@ -1,27 +1,59 @@
-console.log('funcionando')
+
 // VARIABLES
-const nameUsuario = document.getElementById('nameUsuario').value.trim();
 const btn = document.getElementById('btn')
-
+// const select = document.getElementById('select')
 //FUNCIONES
-const consultarUsuario = async () =>{
-    try {
-        const consulta = await fetch(`https://api.github.com/users`, {
-            method: 'GET'
-        })
-        const datos = await consulta.json();
-        console.log(datos);
-        // frase.textContent = datos[0].quote;
-        // autor.textContent = datos[0].author;
+const consultarUsuario = async (e) => {
+    e.preventDefault();
 
+    let nameUsuario = document.getElementById('nameUsuario').value.trim();
+    try {
+        const consulta = await fetch(`https://api.github.com/users/${nameUsuario}`, {
+            method: 'GET'
+        });
+        const datos = await consulta.json();
         
+        
+        if (datos && datos.login) {
+            console.log(`Username: ${datos.login}`);
+         
+        } else {
+            alert('Usuario no encontrado');
+        }
     } catch (error) {
         console.log(error);
     }
 }
 
+
+const consultarPais = async () => {
+    try {
+        const consulta = await fetch('https://restcountries.com/v3.1/all', {
+            method: 'GET'
+        });
+        const datos = await consulta.json();
+        console.log(datos);
+        
+        const select = document.getElementById('select');
+        
+        datos.forEach(dato => {
+            if (dato.idd && dato.idd.root && dato.idd.suffixes) {
+                let dialCode = dato.idd.root + dato.idd.suffixes[0];
+                let agregarOption = document.createElement('option');
+                agregarOption.value = dialCode;
+                agregarOption.textContent = `${dato.name.common} (+${dialCode})`;
+                select.appendChild(agregarOption);
+            }
+        });
+    } catch (error) {
+        console.error('Error al obtener los datos de los países:', error);
+    }
+};
+
+
 //EVENTOS
 btn.addEventListener('click', consultarUsuario)
+select.addEventListener('click', consultarPais)
 
 
 // // IMPORTACION DE LIBRERIAS 

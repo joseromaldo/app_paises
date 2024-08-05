@@ -11,31 +11,12 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Mantos.
+                        Aplicación de países
                     </a>
                     <ul class="dropdown-menu bg-primary">
                         <li class="nav-item">
-                            <a class="nav-link" href="/formaD_conJS/views/grado/index.php">Grados</a>
+                            <a class="nav-link" href="/formaD_conJS/views/grado/index.php">Usuarios</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/formaD_conJS/views/arma/index.php">Armas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/formaD_conJS/views/aplicacion/index.php">Aplicaciones</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/formaD_conJS/views/programador/index.php">Programadores</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/formaD_conJS/views/tarea/index.php">Tareas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/formaD_conJS/views/asignar/index.php">Asignación de Apps</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/formaD_conJS/views/detalle/index.php">Detalle de trabajos</a>
-                        </li>
-                    
                     </ul>
                 </li>
             </ul>

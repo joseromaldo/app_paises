@@ -7,9 +7,14 @@
         <div class="form-group">
             <label for="name">Nombre</label>
             <input type="search" id="name" class="form-control mt-2" placeholder="Ingrese el nombre completo">
-            <label for="nameUsuario">Usuario de Github</label>
-            <input type="search" id="nameUsuario" class="form-control mt-2" placeholder="Ingrese usuairio en github">
+            <select class="form-select" id="select">País de origen
+                <option selected>Seleccionar País</option>
+            </select>
+            <!-- <select class="form-select" name="tar_app" id="tar_app" required>
+          <option selected>Seleccionar aplicación</option>
+        </select> -->
         </div>
+        
         <button type="submit" id="btn" class="btn btn-primary mt-3">Enviar</button>
     </form>
 <!-- </div>
@@ -22,6 +27,31 @@
         </div>
     </div> -->
 </div>
+
+<div class="row justify-content-center">
+        <div class="col-lg-12 table-responsive">
+            <h2 class="text-center mt-3">Listado de programadores</h2>
+            <table class="table table-bordered table-hover" id="tablaTareas">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>No.</th>
+                        <th>Nombre</th>
+                        <th>Usuario</th>
+                        <th>Pais</th>
+                        <th>Código de Marcación</th>
+                        <th>Telefono</th>
+                        <th>Correo</th>
+                         <th>Modificar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="9" class="text-center">No hay registros disponibles</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 <script defer src="/app_paises/src/funciones.js"></script>
 <script defer src="/app_paises/src/js/usuario/index.js"></script>
 <?php include_once '../../includes/footer.php'; ?>
